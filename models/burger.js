@@ -4,21 +4,22 @@
 const orm = require("../config/orm.js");
 
 const burger  = {
-    all: function(callback) {
-        orm.all("burgers", function(res){
+    selectAll: function(callback) {
+        orm.selectAll("burgers", function(res){
             callback(res);
         });
     },
-
-
     //the variables cols and vals are arrays
-    create: function(cols, vals, callback) {
-        orm.create("burgers", cols, vals, function(res){
+    insertOne: function(cols, vals, callback) {
+        orm.insertOne("burgers", cols, vals, function(res){
             callback(res);
-        })
+        });
+    },
+    updateOne: function(objColVals, condition, callback) {
+        orm.updateOne("burgers", objColVals, conditon, function(res) {
+            callback(res);
+        });
     }
-
-
 
 }
 
@@ -30,16 +31,5 @@ const burger  = {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 //Exports the database functions for the controller (burgers_controller.js)
-module.exports = cat;
+module.exports = burger;
