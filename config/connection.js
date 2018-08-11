@@ -5,7 +5,7 @@ let connection;
 
 if(process.env.JAWSDB_URL) {
     console.log('heroku')
-    connection = mysql.createConnection(process.env.JAMSDB_URL);
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
 
 } else {
     console.log('local')
