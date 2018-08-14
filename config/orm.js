@@ -20,21 +20,19 @@ function objToSql(ob) {
     const arr = [];
 
     //loops through they keys and pushes the ky/value as a string int arr
-    for (const key in obj) {
-        const value = ob[key];
-        //check tp skip hiddent properties
-        if(ob.hasOwnProperty(key)) {
+    for (var key in obj) {
+       
             arr.push(key + "=" + ob[key]);
         }
         return arr.toString();
     }
-}
+
 
 
 //Methods to retrieve and store data in your database.
 
 
-const orm = {
+var orm = {
     selectAll: function(tableInput, callback) {
         const queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function(err, result) {
@@ -85,8 +83,22 @@ const orm = {
             }
             callback(result);
         });
-    }
-}
+    },
+
+    delete: function(table, condition, callback) {
+        var queryString = "DELETE FROM " + table;
+        queryString += " WHERE ";
+        queryString += condition;
+    
+        connection.query(queryString, function(err, result) {
+          if (err) {
+            throw err;
+          }
+    
+          callback(result);
+        });
+      }
+    };
 
 
 

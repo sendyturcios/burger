@@ -1,0 +1,30 @@
+h1 {
+    text-align: center;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+
+h2 {
+    text-align: center;
+}
+
+ul {
+    text-align: center;
+}
+
+.create-form {
+    text-align: center;
+}
+
+
+
+.form-group {
+    margin-bottom: 5px;
+  }
+
+  

@@ -16,12 +16,18 @@ const burger  = {
         });
     },
     updateOne: function(objColVals, condition, callback) {
-        orm.updateOne("burgers", objColVals, conditon, function(res) {
+        orm.updateOne("burgers", objColVals, condition, function(res) {
             callback(res);
         });
-    }
+    },
 
-}
+  delete: function(condition, callback) {
+    orm.delete("burgers", condition, function(res) {
+      callback(res);
+    });
+  }
+};
+
 
 
 
