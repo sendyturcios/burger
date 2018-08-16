@@ -1,31 +1,36 @@
 
 // import MySQL connection
 
-const connection = require("../config/connection.js");
+var connection = require("../config/connection.js");
 
 //Helper function for SQL syntax
 //helps convert array to string
 function printQuestionMarks(num) {
-    const arr = [];
+    var arr = [];
 
-    for(const i = 0; i < num; i++) {
+    for(var i = 0; i < num; i++) {
         arr.push("?");
     }
     return arr.toString();
 }
 
-//helper function to convert object key/value pairs to SQL syntax
 
 function objToSql(ob) {
-    const arr = [];
+    var arr = [];
+  
+    for (let key in ob){
+        let value = ob[key];
 
-    //loops through they keys and pushes the ky/value as a string int arr
-    for (var key in obj) {
-       
-            arr.push(key + "=" + ob[key]);
+        if (Object.hasOwnProperty.call(ob, key)){
+            if(typeof value === "string" && value.indexOf(" ") >= 0) {
+                value = "'" + value + "'"
+            }
+            arr.push(key + "=" + value);
         }
-        return arr.toString();
     }
+  
+    return arr.toString();
+  }
 
 
 
@@ -34,7 +39,7 @@ function objToSql(ob) {
 
 var orm = {
     selectAll: function(tableInput, callback) {
-        const queryString = "SELECT * FROM " + tableInput + ";";
+        var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function(err, result) {
             if(err) {
                 throw err;
@@ -46,7 +51,7 @@ var orm = {
     //vals is an array of values we want to save to cols
     //cols are the columns we want to insert the values into
     insertOne: function(table, cols, vals, callback) {
-        const queryString = "INSERT INTO " + table;
+        var queryString = "INSERT INTO " + table;
 
         queryString += " (";
         queryString += cols.toString();
@@ -69,14 +74,14 @@ var orm = {
     //objColVals would be the columns and values they want to update
     // Ex: {name: panther, sleepy: true}
     updateOne: function(table, objColVals, condition, callback) {
-        const queryString = "UPDATE" + table;
+        var queryString = "UPDATE" + table;
 
         queryString += " SET ";
         queryString += objToSql(objColVals);
         queryString += " WHERE ";
         queryString += condition;
 
-        console.log(queryString);
+        //console.log(queryString);
         connection.query(queryString, function(err, result) {
             if(err) {
                 throw err;

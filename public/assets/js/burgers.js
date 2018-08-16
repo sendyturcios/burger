@@ -1,32 +1,32 @@
 
 $(function() {
-    $(".change-devour").on("click", function(event) {
+    $(".devour-burger").on("click", function(event) {
         var id = $(this).data("id");
-        var newDevour = $(this).data("newdevour");
+        var eat = $(this).data("eat");
 
         let newDevourState = {
-            devoured: newDevour
+            devoured: eat
         };
 
         //Send the PUT request
-        $.ajax("/api/burgers/" + id, {
+        $.ajax(`/api/burgers/${id}`, {
             type: "PUT",
             data: newDevourState
         }).then(
             function() {
-                console.log("changed devoured to", newDevour);
+                console.log("changed devoured state");
                 //Reload the page to get updated list
                 location.reload();
             }
         );
     });
 
-    $(".create-form").on("submit", function(event) {
+    $("#createBtn").on("click", function(event) {
         event.preventDefault();
 
         var newBurger = {
-            name: $("new").val().trim(),
-            devoured: $("[name=devoured]:checked").val().trim()
+            name: $("addBurger").val().trim(),
+            devoured: 0,
         };
 
        
@@ -61,6 +61,7 @@ $(function() {
         );
       });
     });
+
 
 
 

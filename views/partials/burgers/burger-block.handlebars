@@ -3,11 +3,11 @@
 
 	{{name}}
 
-	<button class="change-burger" data-id="{{id}}" data-newburger="{{burger}}">
-		{{#if burger}}Put Back!{{else}} Devour!{{/if}}
+	<button class="devour-burger" data-id="{{id}}" data-devour="{{devoured}}">
+		{{#if burger}}Put Back{{else}} Devour{{/if}}
 	</button>
 
-	<button class="delete-burger" data-id="{{this.id}}">Delete!</button>
+	<button class="delete-burger" data-id="{{this.id}}">Delete</button>
 
 
 

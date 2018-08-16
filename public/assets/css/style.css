@@ -2,6 +2,7 @@ h1 {
     text-align: center;
     padding-top: 40px;
     padding-bottom: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .center {
@@ -34,7 +35,7 @@ ul {
     padding-bottom: 10px;
   }
 
-#new {
+#addBurger {
     align-content: center;
     width: 30%;
     margin-left: auto;
