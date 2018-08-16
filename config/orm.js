@@ -74,7 +74,7 @@ var orm = {
     //objColVals would be the columns and values they want to update
     // Ex: {name: panther, sleepy: true}
     updateOne: function(table, objColVals, condition, callback) {
-        var queryString = "UPDATE" + table;
+        var queryString = "UPDATE " + table;
 
         queryString += " SET ";
         queryString += objToSql(objColVals);
@@ -90,19 +90,7 @@ var orm = {
         });
     },
 
-    delete: function(table, condition, callback) {
-        var queryString = "DELETE FROM " + table;
-        queryString += " WHERE ";
-        queryString += condition;
-    
-        connection.query(queryString, function(err, result) {
-          if (err) {
-            throw err;
-          }
-    
-          callback(result);
-        });
-      }
+   
     };
 
 
